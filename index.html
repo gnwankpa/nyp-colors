@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Node-Mongo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+  <body>
+  <div label="main_Container" id="appRest">
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6"></div>
+    </div>
+
+    <div class="row" label="Question Row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h1>{{main.question}}</h1>
+      </div>
+    </div>
+    <div class="row" label="Answer Row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <input type="radio" name="Radios">{{main.redAnswer}}</input>
+        <br>
+        <input type="radio" name="Radios">{{main.blueAnswer}}</input>
+        <br>
+        <input type="radio" name="Radios">{{main.greenAnswer}}</input>
+        <br>
+        <input type="radio" name="Radios">{{main.yellowAnswer}}</input>
+      </div>
+    </div>
+    <div class="row" label="Page Row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <button type="button" class="btn btn-primary btn-lg"> Next </button>
+      </div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
