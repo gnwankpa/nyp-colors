@@ -6,6 +6,7 @@
 </head>
   <body>
   <div label="main_Container" id="appRest">
+  {{ getQuestion }}
     <div class="row">
       <div class="col-md-6"></div>
       <div class="col-md-6"></div>
@@ -32,7 +33,7 @@
     <div class="row" label="Page Row">
       <div class="col-md-2"></div>
       <div class="col-md-8">
-        <button type="button" class="btn btn-primary btn-lg"> Next </button>
+        <button type="button" v-on:click="nextQuestion()" class="btn btn-primary btn-lg"> Next </button>
       </div>
     </div>
     </div>
