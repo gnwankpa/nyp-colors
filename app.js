@@ -58,6 +58,7 @@ var appRest = new Vue({
         this.main = this.questions[this.qCount]
         console.log(this.main);
         console.log(this.qCount);
+        console.log(this.questions.length);
         })
         .catch(e => {
           this.errors.push(e)
@@ -68,9 +69,15 @@ var appRest = new Vue({
   },
   methods: {
     nextQuestion: function() {
+      if (this.qCount < (this.questions.length -1)) {
       this.qCount = this.qCount + 1
       console.log(this.qCount);
-    }
+    } else {console.log("nothing");}},
+    prevQuestion: function() {
+      if (this.qCount > 0) {
+      this.qCount = this.qCount - 1
+      console.log(this.qCount);
+    } else {console.log("nothing");}}
   },
   watch: {
     // whenever qCount changes, this function will run
