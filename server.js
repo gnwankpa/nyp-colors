@@ -34,7 +34,7 @@ const server = app.listen(port, hostname, () => {
 		if (err) {
 			console.log(err);
 			}
-			console.log('server is running at http://${hostname}:${port}');
+			console.log('server is running at http://'+ hostname + ':' + port +'');
 
 	});
 });
