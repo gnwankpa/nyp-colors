@@ -21,13 +21,13 @@
     <div class="row" label="Answer Row">
       <div class="col-md-2"></div>
       <div class="col-md-8">
-        <input type="radio" name="Radios">{{main.redAnswer}}</input>
+        <input type="radio" v-model="picked" v-on:click="showPicked()" name="Radios" value="Red">{{main.redAnswer}}</input>
         <br>
-        <input type="radio" name="Radios">{{main.blueAnswer}}</input>
+        <input type="radio" v-model="picked" name="Radios" value="Blue">{{main.blueAnswer}}</input>
         <br>
-        <input type="radio" name="Radios">{{main.greenAnswer}}</input>
+        <input type="radio" v-model="picked" name="Radios" value="Green">{{main.greenAnswer}}</input>
         <br>
-        <input type="radio" name="Radios">{{main.yellowAnswer}}</input>
+        <input type="radio" v-model="picked" name="Radios" value="Yellow">{{main.yellowAnswer}}</input>
       </div>
     </div>
     <div class="row" label="Page Row">
@@ -35,9 +35,39 @@
       <div class="col-md-8">
         <button type="button" v-on:click="prevQuestion()" class="btn btn-primary btn-lg"> Previous </button>
         <button type="button" v-on:click="nextQuestion()" class="btn btn-primary btn-lg"> Next </button>
+        <h2>Selected: {{ picked }}</h2>
       </div>
     </div>
-    </div>
+    <hr>
+    <hr>
+    <div class="row" label="Debug Row">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h2> Tally Totals</h2>
+        <h3>Red: {{tally.red}}</h3>
+        <h3>Blue: {{tally.blue}}</h3>
+        <h3>Green: {{tally.green}}</h3>
+        <h3>Yellow: {{tally.yellow}}</h3>
+      </div>
+  </div>
+    <hr>
+    <hr>
+    <div class="row" label="Notes Row">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h3 stlye="bold"> Notes</h3>
+          <ul> 
+            <li> Use v-if or v-show to create a final "results" page</li>
+            <li> Remove DEbug and notes in final version</li>
+            <li> Outsource repeating code in page navigation functions</li>
+            <li> Create Users</li>
+            <li> Push results recording to DB </li>
+
+          </ul>
+
+      </div>
+  </div>
+
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
