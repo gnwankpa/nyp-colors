@@ -23,7 +23,11 @@ app.use('/api/questions', require('./api/questions/routes/get_questions'));
 app.use('/api/questions', require('./api/questions/routes/get_question'));
 app.use('/api/questions', require('./api/questions/routes/put_question'));
 app.use('/api/questions', require('./api/questions/routes/delete_question'));
-
+app.use('/api/users', require('./api/users/routes/post_user'));
+app.use('/api/users', require('./api/users/routes/get_users'));
+app.use('/api/users', require('./api/users/routes/get_user'));
+app.use('/api/users', require('./api/users/routes/put_user'));
+app.use('/api/users', require('./api/users/routes/delete_user'));
 
 const hostname = 'localhost';
 const port = 3001;
