@@ -6,79 +6,94 @@
 </head>
   <body>
   <div label="main_Container" id="appRest">
-    <div>
-        <div label="Questions Section" v-if="!showSum">
-          {{getQuestion}}
-          <div class="row" label="Question Row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <h1>{{main.question}}</h1>
-            </div>
-          </div>
-          <div class="row" label="Answer Row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <input type="radio" v-model="picked" v-on:click="showPicked()" name="Radios" value="Red">{{main.redAnswer}}</input>
-              <br>
-              <input type="radio" v-model="picked" name="Radios" value="Blue">{{main.blueAnswer}}</input>
-              <br>
-              <input type="radio" v-model="picked" name="Radios" value="Green">{{main.greenAnswer}}</input>
-              <br>
-              <input type="radio" v-model="picked" name="Radios" value="Yellow">{{main.yellowAnswer}}</input>
-            </div>
-          </div>
-          <div class="row" label="Page Row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <button type="button" v-on:click="prevQuestion()" class="btn btn-primary btn-lg"> Previous </button>
-              <button type="button" v-on:click="nextQuestion()" class="btn btn-primary btn-lg"> Next </button>
-            </div>
-          </div>
-        </div>
-      <div label="Results Section" v-else>
-          <div class="row" label="Page Row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-            <h2>Your color is: <span :style="{color: lowerColor}">{{yourColor}}!</span></h2></div>
-          </div>
-      </div>
-    </div>
-      <hr>
-      <hr>
-    <div class="row" label="Debug Row">
-      <div class="col-md-2"></div>
-        <div class="col-md-2" label="Tally Stats">
-          <h3>Tally Totals</34>
-          <h4>Red: {{tally.red}}</h4>
-          <h4>Blue: {{tally.blue}}</h4>
-          <h4>Green: {{tally.green}}</h4>
-          <h4>Yellow: {{tally.yellow}}</h4>
-        </div>
-        <div class="col-md-2" label="qCount stats">
-          <h3>QCount Stats</h3>
-          <h4>Selected: {{ picked }}</h4>
-          <h4>qCount: {{qCount}}</h4>
-          <h4>yourColor: {{yourColor}}</h4>
-          <h4>QuestionLength: {{questions.length}}</h4>
-          <h4>ColorArray: {{colorArray}}</h4>
-        </div>
-    </div>
-      <hr>
-      <hr>
-      <div class="row" label="Notes Row">
-      <div class="col-md-2"></div>
+      <div class="row" label="NavBarRow">
+        <div class="col-md-2"></div>
         <div class="col-md-8">
-          <h4 stlye="bold"> Notes</h4>
-            <ul> 
-              <li> Use v-if or v-show to create a final "results" page</li>
-              <li> Remove DEbug and notes in final version</li>
-              <li> Outsource repeating code in page navigation functions</li>
-              <li> Create Users</li>
-              <li> Push results recording to DB </li>
-            </ul>
-
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Username">
+              <input type="text" class="form-control" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        <div class="col-md-2"></div>
         </div>
-    </div>
+      </div> 
+      <div label="Logged App Scope" v-show="loggedIn">
+        <div label="App Section" >
+            <div label="Questions Section" v-if="!showSum">
+              {{getQuestion}}
+              <div class="row" label="Question Row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <h1>{{main.question}}</h1>
+                </div>
+              </div>
+              <div class="row" label="Answer Row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <input type="radio" v-model="picked" v-on:click="showPicked()" name="Radios" value="Red">{{main.redAnswer}}</input>
+                  <br>
+                  <input type="radio" v-model="picked" name="Radios" value="Blue">{{main.blueAnswer}}</input>
+                  <br>
+                  <input type="radio" v-model="picked" name="Radios" value="Green">{{main.greenAnswer}}</input>
+                  <br>
+                  <input type="radio" v-model="picked" name="Radios" value="Yellow">{{main.yellowAnswer}}</input>
+                </div>
+              </div>
+              <div class="row" label="Page Row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <button type="button" v-on:click="prevQuestion()" class="btn btn-primary btn-lg"> Previous </button>
+                  <button type="button" v-on:click="nextQuestion()" class="btn btn-primary btn-lg"> Next </button>
+                </div>
+              </div>
+            </div>
+          <div label="Results Section" v-else>
+              <div class="row" label="Page Row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                <h2>Your color is: <span :style="{color: lowerColor}">{{yourColor}}!</span></h2></div>
+              </div>
+          </div>
+        </div>
+          <hr>
+          <hr>
+        <div class="row" label="Debug Row">
+          <div class="col-md-2"></div>
+            <div class="col-md-2" label="Tally Stats">
+              <h3>Tally Totals</34>
+              <h4>Red: {{tally.red}}</h4>
+              <h4>Blue: {{tally.blue}}</h4>
+              <h4>Green: {{tally.green}}</h4>
+              <h4>Yellow: {{tally.yellow}}</h4>
+            </div>
+            <div class="col-md-2" label="qCount stats">
+              <h3>QCount Stats</h3>
+              <h4>Selected: {{ picked }}</h4>
+              <h4>qCount: {{qCount}}</h4>
+              <h4>yourColor: {{yourColor}}</h4>
+              <h4>QuestionLength: {{questions.length}}</h4>
+              <h4>ColorArray: {{colorArray}}</h4>
+            </div>
+        </div>
+          <hr>
+          <hr>
+          <div class="row" label="Notes Row">
+          <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <h4 stlye="bold"> Notes</h4>
+                <ul> 
+                  <li> Use v-if or v-show to create a final "results" page</li>
+                  <li> Remove DEbug and notes in final version</li>
+                  <li> Outsource repeating code in page navigation functions</li>
+                  <li> Create Users</li>
+                  <li> Push results recording to DB </li>
+                </ul>
+
+            </div>
+        </div>
+      </div>
   </div>
   </body>
     <script src="https://unpkg.com/vue"></script>

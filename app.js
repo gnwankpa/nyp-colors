@@ -20,7 +20,9 @@ var appRest = new Vue({
     yourColor: '',
     lowerColor:'',
     colorArray: [],
-    showSum: false
+    showSum: false,
+    loggedIn: false
+
   },
   // methods: {
   // //   postContact: function () {
