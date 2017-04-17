@@ -18,6 +18,7 @@ var appRest = new Vue({
       yellow: 0,
     },
     yourColor: '',
+    lowerColor:'',
     colorArray: [],
     showSum: false
   },
@@ -109,6 +110,7 @@ var appRest = new Vue({
           if (largest == this.colorArray[3]) {
             this.yourColor = 'Yellow'
           };
+          this.lowerColor = this.yourColor.toLowerCase();
           return this.yourColor;
     },
     nextQuestion: function() {
