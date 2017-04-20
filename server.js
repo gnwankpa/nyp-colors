@@ -28,6 +28,8 @@ app.use('/api/users', require('./api/users/routes/get_users'));
 app.use('/api/users', require('./api/users/routes/get_user'));
 app.use('/api/users', require('./api/users/routes/put_user'));
 app.use('/api/users', require('./api/users/routes/delete_user'));
+app.use('/api/users', require('./api/users/routes/login_user'));
+
 
 const hostname = 'localhost';
 const port = 3001;
