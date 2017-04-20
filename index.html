@@ -11,15 +11,16 @@
         <div class="col-md-8">
           <form class="navbar-form navbar-right">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Username">
-              <input type="text" class="form-control" placeholder="Password">
+              <input type="text" v-model="userName" class="form-control" placeholder="Username">
+              <input type="text" v-model="password" class="form-control" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button v-on:click="userLogin()" class="btn btn-primary">Login</button>
           </form>
         <div class="col-md-2"></div>
         </div>
       </div> 
-      <div label="Logged App Scope" v-show="loggedIn">
+      <div label="Logged App Scope" v-if="loggedIn == false"></div>
+      <div label="Logged App Scope" v-else>
         <div label="App Section" >
             <div label="Questions Section" v-if="!showSum">
               {{getQuestion}}

@@ -1,6 +1,14 @@
+// import VueLocalStorage from 'vue-localstorage';
+
+// Vue.use(VueLocalStorage);
 
 var appRest = new Vue({
   el: '#appRest',
+  // localStorage: {
+  //   logged_in: {
+  //     type: Boolean
+  //   }
+  // },
   data: {
     questions: {},
     e: [],
@@ -21,7 +29,10 @@ var appRest = new Vue({
     lowerColor:'',
     colorArray: [],
     showSum: false,
-    loggedIn: false
+    loggedIn: axios.get('http://localhost:3001/api/users').then(response => { response.data[0].loggedIn}).catch(e =>({})),
+    // loggedIn: this.$localStorage.get('logged_in'),
+    userName:'',
+    password:''
 
   },
   // methods: {
@@ -69,6 +80,7 @@ var appRest = new Vue({
 
         this.questions = response.data
         this.main = this.questions[this.qCount]
+        console.log(loggedIn);
         })
         .catch(e => {
           this.errors.push(e)
@@ -78,6 +90,19 @@ var appRest = new Vue({
 
   },
   methods: {
+    userLogin: function () {
+      axios.post('http://localhost:3001/api/users/login', {
+        userName: this.userName,
+        password: this.password
+      })
+      .then(response => {
+        // this.$localStorage.set('logged_in', true)
+        axios.post('http://localhost:3001/api/users').then(response => { response.data[0].loggedIn = true}).catch(e =>({}));
+      })
+      .catch(e => {
+        this.errors.push(e)
+      });
+  },
     addPoint: function() {
       if (this.picked == 'Red') {
           this.tally.red = this.tally.red + 1

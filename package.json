@@ -10,10 +10,14 @@
   "author": "Gene Nwankpa",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "cors": "^2.8.1",
     "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
     "mongodb-uri": "^0.9.7",
-    "mongoose": "^4.9.0"
+    "mongoose": "^4.9.0",
+    "mongoose-unique-validator": "^1.0.5",
+    "vue-localstorage": "^0.1.3"
   }
 }

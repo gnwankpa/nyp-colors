@@ -9,7 +9,8 @@ const UserSchema = new Schema({
   password: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   userColor: { type: String, required: false },
-  admin: { type: Boolean, required: false, default: false }
+  admin: { type: Boolean, required: false, default: false },
+  loggedIn: {type: Boolean, default: false}
 });
 
 UserSchema.plugin(mongooseUniqueValidator);
