@@ -29,7 +29,9 @@ var appRest = new Vue({
     lowerColor:'',
     colorArray: [],
     showSum: false,
-    loggedIn: axios.get('http://localhost:3001/api/users').then(response => { response.data[0].loggedIn}).catch(e =>({})),
+    localdisk: localStorage.setItem('user_online', 'lol'),
+    loggedIn: false,
+    // loggedIn: localStorage.getItem('user_online'),
     // loggedIn: this.$localStorage.get('logged_in'),
     userName:'',
     password:''
@@ -96,8 +98,9 @@ var appRest = new Vue({
         password: this.password
       })
       .then(response => {
+        this.localStorage.setItem('user_online', true)
         // this.$localStorage.set('logged_in', true)
-        axios.post('http://localhost:3001/api/users').then(response => { response.data[0].loggedIn = true}).catch(e =>({}));
+        // axios.post('http://localhost:3001/api/users').then(response => { response.data[0].loggedIn = true}).catch(e =>({}));
       })
       .catch(e => {
         this.errors.push(e)
