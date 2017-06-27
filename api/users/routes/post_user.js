@@ -17,6 +17,14 @@ router.route('/')
 		admin: req.body.admin
     });
 
+    user.address[0] = {
+      street: req.body.street,
+      city: req.body.city,
+      state: req.body.state,
+      zipcode: req.body.zipCode,
+      country: req.body.country
+        };
+
     user.save((err, user) => {
       if (err) {
         res.status(400).json(err);

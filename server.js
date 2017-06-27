@@ -7,7 +7,6 @@ const cors = require('cors'); // 8080
 const mongoose = require('mongoose');
 const uriUtil = require('mongodb-uri');
 
-
 const mongodbUri ='mongodb://nypcolors:nypcolors@ds135700.mlab.com:35700/nyp-colors';
 const mongooseUri = uriUtil.formatMongoose(mongodbUri);
 const dbOptions = {};
@@ -17,23 +16,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors()); //true
 app.use(express.static(__dirname + '/'));
 
-
 app.use('/api/questions', require('./api/questions/routes/post_question'));
 app.use('/api/questions', require('./api/questions/routes/get_questions'));
 app.use('/api/questions', require('./api/questions/routes/get_question'));
 app.use('/api/questions', require('./api/questions/routes/put_question'));
 app.use('/api/questions', require('./api/questions/routes/delete_question'));
 app.use('/api/users', require('./api/users/routes/post_user'));
+app.use('/api/users', require('./api/users/routes/post_user_address'));
 app.use('/api/users', require('./api/users/routes/get_users'));
 app.use('/api/users', require('./api/users/routes/get_user'));
 app.use('/api/users', require('./api/users/routes/put_user'));
 app.use('/api/users', require('./api/users/routes/delete_user'));
 app.use('/api/users', require('./api/users/routes/login_user'));
 
-
 const hostname = 'localhost';
 const port = 3001;
-
 
 const server = app.listen(port, hostname, () => {
 	mongoose.connect(mongooseUri, dbOptions, (err) => {
